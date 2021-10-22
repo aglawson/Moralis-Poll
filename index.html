@@ -10,31 +10,32 @@
         <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://npmcdn.com/moralis@0.0.30/dist/moralis.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+
     </head>
 
     <body>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Welcome</h1>
                 <button id="loginButton">Login</button>
                 <button id="logoutButton">Logout</button>
+                <h1 class="display-4">Welcome</h1>
             </div>
         <h2>Create Poll</h2>
-        <input type="text" id="topic" placeholder="Poll Topic"> <br/>
-        <input type="text" id="choice1" placeholder="Choice">
+        <input type="text" id="topic" placeholder="Moralis Challenge Winner"> <br/>
+        <input type="text" id="choice1" placeholder="0xLawson"><p style="display: inline;" id="choicesSoFar"></p>
         <button id="addChoiceButton">Add Choice</button>
-        <div id="choicesSoFar"></div>
 
         <button id="createPollButton">Create Poll</button>
         <div id="idOutput"></div>
 
         <h2>Vote</h2>
-        <b>Enter the ID of the poll and click "Find Poll". <br/>Then, click your choice.</b>
+        <p id="explainer"><b>Enter the ID of the poll and click "Find Poll". <br/>Then, click your choice.</b></p>
         <br/>
         <input type="text" id="voteTopic" placeholder="Search Poll by ID">
         <br/>
         <button id="voteButton">Find Poll</button>
-        <button id="seeResultsButton">See Results</button>
+        <button id="seeResultsButton">Results</button>
         <h2 id="topicTitle"></h2>
 
         <input type='radio' name='chooseone' id="checkbox1" value="0" onclick="submitVote(0)" style="display: none;">
@@ -76,6 +77,7 @@
         <label for="checkbox10" id="cb10"></label>
 
 
+        <script type="text/javascript" src="./abi.js"></script>
         <script type="text/javascript" src="./main.js"></script>
     </body>
 </html>

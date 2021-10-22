@@ -1,0 +1,103 @@
+body {
+    background-color: #FFFFFF;
+  }
+  h1 {
+    color: #041836;
+    text-align: center;
+
+  }
+
+  h2 {
+    color: #041836;
+    text-align: center;
+=  }
+
+  input {
+    color: #041836;
+    margin-left: 44.5%;
+  }
+
+  #createPollButton {
+    margin-left: 44.5%;
+      width: 11.55%;
+      text-align: center;
+  }
+
+  #addChoiceButton {
+    margin-left: 44.5%;
+    text-align: center;
+    width: 11.55%;
+
+  }
+  #topic {
+      width: 11%;
+  }
+
+  #choice1 {
+      width: 11%;
+  }
+
+  #choicesSoFar {
+      text-align: center;
+  }
+
+  #voteButton{
+    margin-left: 44.5%;
+  }
+  #seeResultsButton {
+      width: 5.74%;
+  }
+
+  #explainer {
+      text-align: center;
+  }
+
+  label {
+      text-align: center;
+  }
+
+  #cb1 {
+      margin-left: 46.5%;
+    
+  }
+  #cb2 {
+    margin-left: 46.5%;
+
+}
+#cb3 {
+    margin-left: 46.5%;
+
+}
+#cb4 {
+    margin-left: 46.5%;
+
+}
+#cb5 {
+    margin-left: 46.5%;
+
+}
+#cb6 {
+    margin-left: 46.5%;
+
+}
+#cb7 {
+    margin-left: 46.5%;
+
+}
+#cb8 {
+    margin-left: 46.5%;
+
+}
+#cb9 {
+    margin-left: 46.5%;
+
+}
+#cb10 {
+    margin-left: 46.5%;
+
+}
+
+#idOutput {
+    text-align: center;
+    padding-top: 1%;
+}

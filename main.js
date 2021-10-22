@@ -17,7 +17,12 @@ $(document).ready(function () {
       $("#addChoiceButton").click(loadChoices);
   });
 });
-
+  hideElement = (element) => element.style.display = "none";
+if(Moralis.User.current() == null) {
+  hideElement(document.getElementById("logoutButton"));
+} else {
+  hideElement(document.getElementById("loginButton"));
+}
 var choices = [];
 
 async function endPoll() {
@@ -123,7 +128,8 @@ async function createPoll() {
     query.equalTo('creator', Moralis.User.current().get('ethAddress'));
     query.descending('createdAt');
     const res = await query.find();
-    document.getElementById("idOutput").innerHTML = res[0].id;
+    document.getElementById("idOutput").innerHTML ="Poll code: " + res[0].id + " <br/> Share this code with people you want to participate in your poll!";
+    hideElement(document.getElementById("choicesSoFar"));
   }
 }
 
@@ -132,13 +138,20 @@ init = async () => {
   user = await Moralis.User.current();
 }
 
-logout = async () => await Moralis.User.logOut();
+logout = async () => {
+  await Moralis.User.logOut()
+  hideElement(document.getElementById("logoutButton"));
+  showElement(document.getElementById("loginButton"));
+}
 
 async function login() {
     try{
         user = await Moralis.Web3.authenticate();
+        hideElement(document.getElementById("loginButton"));
+        showElement(document.getElementById("logoutButton"));
     } catch(error) {
         console.log(error);
     }
 }
 
+showElement = (element) => element.style.display = "block";
