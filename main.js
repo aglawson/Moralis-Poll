@@ -27,6 +27,13 @@ async function endPoll() {
 
 async function getResults() {
   seeResults(document.getElementById("voteTopic").value);
+  const que = new Moralis.Query('Votes');
+  let subscription = await que.subscribe();
+  subscription.on('create', (object) => {
+    if(object.attributes.topic == document.getElementById("voteTopic").value){
+    seeResults(object.attributes.topic);
+    }
+  });
 }
 
 async function seeResults(topicId) {
