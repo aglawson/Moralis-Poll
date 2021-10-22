@@ -30,26 +30,53 @@
         <div id="idOutput"></div>
 
         <h2>Vote</h2>
-        <b>Enter the ID of the poll and click "Find Poll". <br/>Then, enter the number associated with your choice and click "Submit Vote".</b>
+        <b>Enter the ID of the poll and click "Find Poll". <br/>Then, click your choice.</b>
         <br/>
         <input type="text" id="voteTopic" placeholder="Search Poll by ID">
         <input type="number" id="choice" placeholder="Choice">
         <br/>
         <button id="voteButton">Find Poll</button>
-        <button id="submitVoteButton">Submit Vote</button>
         <button id="seeResultsButton">See Results</button>
         <h2 id="topicTitle"></h2>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+
+        <input type='radio' name='chooseone' id="checkbox1" value="0" onclick="submitVote(0)" style="display: none;">
+        <label for="checkbox1" id="cb1"></label>
+        <br/>
+        <input type='radio' name='chooseone' id="checkbox2" value="1" onclick="submitVote(1)"style="display: none;">
+        <label for="checkbox2" id="cb2"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox3" value="2" onclick="submitVote(2)"style="display: none;">
+        <label for="checkbox3" id="cb3"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox4" value="3" onclick="submitVote(3)"style="display: none;">
+        <label for="checkbox4" id="cb4"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox5" value="4" onclick="submitVote(4)"style="display: none;">
+        <label for="checkbox5" id="cb5"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox6" value="5" onclick="submitVote(5)"style="display: none;">
+        <label for="checkbox6" id="cb6"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox7" value="6" onclick="submitVote(6)"style="display: none;>
+        <label for="checkbox7" id="cb7"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox8" value="7" onclick="submitVote(7)"style="display: none;>
+        <label for="checkbox8" id="cb8"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox9" value="8" onclick="submitVote(8)" style="display: none;">
+        <label for="checkbox9" id="cb9"></label>
+        <br/>
+
+        <input type='radio' name='chooseone' id="checkbox10" value="9" onclick="submitVote(9)" style="display: none;">
+        <label for="checkbox10" id="cb10"></label>
+
 
         <script type="text/javascript" src="./abi.js"></script>
         <script type="text/javascript" src="./main.js"></script>

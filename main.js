@@ -51,9 +51,9 @@ async function seeResults(topicId) {
     var result = await query.find();
     if(result.length > 0){
       choiceCounts[i] += result.length;
-      document.getElementsByTagName("p")[i].innerHTML = choiceCounts[i] + " votes for " + choices[i];
+      document.getElementsByTagName("label")[i].innerHTML = choiceCounts[i] + " votes for " + choices[i];
     } else {
-      document.getElementsByTagName("p")[i].innerHTML = "0 votes for " + choices[i];
+      document.getElementsByTagName("label")[i].innerHTML = "0 votes for " + choices[i];
     }
   }
 
@@ -65,19 +65,18 @@ async function vote() {
   query.equalTo('objectId', topic);
   const result = await query.find();
   document.getElementById("topicTitle").innerHTML = result[0].attributes.topic;
-  //console.log(result);
   for(var i = 0; i < result[0].attributes.choices.length; i++){
-    document.getElementsByTagName("p")[i].innerHTML = i + ": " + result[0].attributes.choices[i];
+    document.getElementsByTagName("label")[i].innerHTML = result[0].attributes.choices[i];
   }
+
 }
 
-async function submitVote() {
+async function submitVote(vote) {
   if(Moralis.User.current() == null) {
     login();
   } else {
-    if(document.getElementById("choice").value == ''){alert('Please enter the number associated with your choice');}else {
   const query = new Moralis.Query('Votes');
-  query.equalTo('voter', Moralis.User.current().get('ethAddress') + document.getElementById("voteTopic").value);
+  query.equalTo('voter', Moralis.User.current().get('username') + document.getElementById("voteTopic").value);
   const res = await query.find();
 
   const que = new Moralis.Query('Votes');
@@ -92,8 +91,8 @@ async function submitVote() {
     const VoteObj = Moralis.Object.extend('Votes');
     const voteobj = new VoteObj();
     voteobj.set('topic', document.getElementById("voteTopic").value);
-    voteobj.set('choice', document.getElementById("choice").value);
-    voteobj.set('voter', Moralis.User.current().get('ethAddress') + document.getElementById("voteTopic").value);
+    voteobj.set('choice', vote.toString());
+    voteobj.set('voter', Moralis.User.current().get('username') + document.getElementById("voteTopic").value);
     voteobj.save();
     seeResults(document.getElementById("voteTopic").value);
     } else {
@@ -102,7 +101,6 @@ async function submitVote() {
   }
 }
 
-}
 function loadChoices() {
   choices.push(document.getElementById("choice1").value);
   document.getElementById("choicesSoFar").innerHTML = choices;
