@@ -13,8 +13,11 @@ $(document).ready(function () {
       $("#logoutButton").click(logout);
       $("#seeResultsButton").click(getResults);
       $("#submitVoteButton").click(submitVote);
+      $("#addChoiceButton").click(loadChoices);
   });
 });
+
+var choices = [];
 
 async function endPoll() {
   const poll = document.getElementById("topic").value;
@@ -32,6 +35,7 @@ async function seeResults(topicId) {
   var res = await que.find();
   var choices = res[0].attributes.choices;
   var choiceCounts = [0,0,0,0,0,0,0,0,0,0];
+  document.getElementById("topicTitle").innerHTML = res[0].attributes.topic;
   for(var i = 0; i < choices.length; i++) {
     var query = new Moralis.Query("Votes");
     query.equalTo('topic', topicId);
@@ -88,7 +92,10 @@ async function submitVote() {
   }
 
 }
-
+function loadChoices() {
+  choices.push(document.getElementById("choice1").value);
+  document.getElementById("choicesSoFar").innerHTML = choices;
+}
 async function createPoll() {
   if(Moralis.User.current() == null) {
     login();
@@ -98,39 +105,7 @@ async function createPoll() {
 
     const pollTopic = document.getElementById("topic").value;
     poll.set('topic', pollTopic);
-    var choices = [];
 
-    poll.set('numOfChoices', 0);
-    if(document.getElementById("choice1").value != '') {
-      choices.push(document.getElementById("choice1").value);
-    }
-    if(document.getElementById("choice2").value != '') {
-      choices.push(document.getElementById("choice2").value);
-    }
-    if(document.getElementById("choice3").value != '') {
-      choices.push(document.getElementById("choice3").value);
-    }
-    if(document.getElementById("choice4").value != '') {
-      choices.push(document.getElementById("choice4").value);
-    }
-    if(document.getElementById("choice5").value != '') {
-      choices.push(document.getElementById("choice5").value);
-    }
-    if(document.getElementById("choice6").value != '') {
-      choices.push(document.getElementById("choice6").value);
-    }
-    if(document.getElementById("choice7").value != '') {
-      choices.push(document.getElementById("choice7").value);
-    }
-    if(document.getElementById("choice8").value != '') {
-      choices.push(document.getElementById("choice8").value);
-    }
-    if(document.getElementById("choice9").value != '') {
-      choices.push(document.getElementById("choice9").value);
-    }
-    if(document.getElementById("choice10").value != '') {
-      choices.push(document.getElementById("choice10").value);
-    }
     poll.set('choices', choices);
     poll.set('creator', Moralis.User.current().get('ethAddress'));
     await poll.save();
