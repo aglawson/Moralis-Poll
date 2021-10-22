@@ -15,6 +15,8 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">Welcome</h1>
+                <button id="loginButton">Login</button>
+                <button id="logoutButton">Logout</button>
             </div>
         <h2>Create Poll</h2>
         <input type="text" id="topic" placeholder="Poll Topic">
@@ -25,21 +27,26 @@
         <input type="text" id="choice4" placeholder="Choice 4">
         <input type="text" id="choice5" placeholder="Choice 5">
         <input type="text" id="choice6" placeholder="Choice 6">
+        <input type="text" id="choice7" placeholder="Choice 7">
+        <input type="text" id="choice8" placeholder="Choice 8">
+        <input type="text" id="choice9" placeholder="Choice 9">
+        <input type="text" id="choice10" placeholder="Choice10">
+
 
         <br/> <br/>
         <button id="createPollButton">Create Poll</button>
         <button id="endPollButton">End Poll</button>
-        <button id="seeResultsButton">See Results</button>
+        <div id="idOutput"></div>
 
         <br/>
         <br/>
         <h2>Vote</h2>
-        <input type="text" id="voteTopic" placeholder="Poll Topic">
-        <input type="text" id="choice" placeholder="Choice">
+        <input type="text" id="voteTopic" placeholder="Search Poll by ID">
+        <input type="number" id="choice" placeholder="Choice">
         <br/>
-        <button id="voteButton">Vote!</button>
-
-        <h2>Results</h2>
+        <button id="voteButton">Find Poll</button>
+        <button id="submitVoteButton">Submit Vote</button>
+        <button id="seeResultsButton">See Results</button>
         <p></p>
         <p></p>
         <p></p>
@@ -51,7 +58,6 @@
         <p></p>
         <p></p>
         <p></p>
-
 
         <script type="text/javascript" src="./abi.js"></script>
         <script type="text/javascript" src="./main.js"></script>
