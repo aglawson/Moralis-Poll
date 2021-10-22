@@ -75,6 +75,7 @@ async function submitVote() {
   if(Moralis.User.current() == null) {
     login();
   } else {
+    if(document.getElementById("choice").value == ''){alert('Please enter the number associated with your choice');}else {
   const query = new Moralis.Query('Votes');
   query.equalTo('voter', Moralis.User.current().get('ethAddress') + document.getElementById("voteTopic").value);
   const res = await query.find();
@@ -99,6 +100,7 @@ async function submitVote() {
       alert("You've alredy voted in this poll");
     }
   }
+}
 
 }
 function loadChoices() {
