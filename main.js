@@ -1,3 +1,4 @@
+
 Moralis.initialize("IAdhaE7rhTCWkQ9m4Y7OqA6uDRFLexDf1AHl6xOD");
 Moralis.serverURL = "https://nxjr5nsntm4w.usemoralis.com:2053/server";
 var web3 = new Web3(web3.currentProvider);
@@ -63,6 +64,7 @@ async function vote() {
   const query = new Moralis.Query('Polls');
   query.equalTo('objectId', topic);
   const result = await query.find();
+  document.getElementById("topicTitle").innerHTML = result[0].attributes.topic;
   //console.log(result);
   for(var i = 0; i < result[0].attributes.choices.length; i++){
     document.getElementsByTagName("p")[i].innerHTML = i + ": " + result[0].attributes.choices[i];
@@ -102,6 +104,7 @@ async function submitVote() {
 function loadChoices() {
   choices.push(document.getElementById("choice1").value);
   document.getElementById("choicesSoFar").innerHTML = choices;
+  document.getElementById("choice1").value = '';
 }
 async function createPoll() {
   if(Moralis.User.current() == null) {
