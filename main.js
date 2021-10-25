@@ -153,7 +153,7 @@ async function login() {
     try{
         user = await Moralis.Web3.authenticate();
         hideElement(document.getElementById("loginButton"));
-        showElement(document.getElementById("logoutButton"));
+        //showElement(document.getElementById("logoutButton"));
     } catch(error) {
         console.log(error);
     }
