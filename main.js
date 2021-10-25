@@ -11,7 +11,7 @@ var web3 = new Web3(web3.currentProvider);
       $("#voteButton").click(vote);
       $("#endPollButton").click(endPoll);
       $("#loginButton").click(login);
-      $("#logoutButton").click(logout);
+      //$("#logoutButton").click(logout);
       $("#seeResultsButton").click(getResults);
       $("#submitVoteButton").click(submitVote);
       $("#addChoiceButton").click(loadChoices);
@@ -19,7 +19,7 @@ var web3 = new Web3(web3.currentProvider);
 //});
   hideElement = (element) => element.style.display = "none";
 if(Moralis.User.current() == null) {
-  hideElement(document.getElementById("logoutButton"));
+  //hideElement(document.getElementById("logoutButton"));
 } else {
   hideElement(document.getElementById("loginButton"));
 }
@@ -145,7 +145,7 @@ async function init() {
 
 async function logout() {
   await Moralis.User.logOut()
-  hideElement(document.getElementById("logoutButton"));
+  //hideElement(document.getElementById("logoutButton"));
   showElement(document.getElementById("loginButton"));
 }
 
