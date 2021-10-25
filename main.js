@@ -3,8 +3,8 @@ Moralis.initialize("IAdhaE7rhTCWkQ9m4Y7OqA6uDRFLexDf1AHl6xOD");
 Moralis.serverURL = "https://nxjr5nsntm4w.usemoralis.com:2053/server";
 var web3 = new Web3(web3.currentProvider);
 
-$(document).ready(function () {
-  window.ethereum.enable().then(function(accounts) {
+//$(document).ready(function () {
+  //window.ethereum.enable().then(function(accounts) {
       //contractInstance = new web3.eth.Contract(abi, contractAddress, {from: accounts[0]});
       init();
       $("#createPollButton").click(createPoll);
@@ -15,8 +15,8 @@ $(document).ready(function () {
       $("#seeResultsButton").click(getResults);
       $("#submitVoteButton").click(submitVote);
       $("#addChoiceButton").click(loadChoices);
-  });
-});
+  //});
+//});
   hideElement = (element) => element.style.display = "none";
 if(Moralis.User.current() == null) {
   hideElement(document.getElementById("logoutButton"));
@@ -107,6 +107,7 @@ async function submitVote(vote) {
 }
 
 function loadChoices() {
+  showElement(document.getElementById("choicesSoFar"));
   choices.push(document.getElementById("choice1").value);
   document.getElementById("choicesSoFar").innerHTML = choices;
   document.getElementById("choice1").value = '';
@@ -130,15 +131,19 @@ async function createPoll() {
     const res = await query.find();
     document.getElementById("idOutput").innerHTML ="Poll code: " + res[0].id + " <br/> Share this code with people you want to participate in your poll!";
     hideElement(document.getElementById("choicesSoFar"));
+    choices = [];
   }
 }
 
-init = async () => {
+async function init() {
   window.web3 = await Moralis.Web3.enable();
   user = await Moralis.User.current();
+  if(user == null) {
+    login();
+  }
 }
 
-logout = async () => {
+async function logout() {
   await Moralis.User.logOut()
   hideElement(document.getElementById("logoutButton"));
   showElement(document.getElementById("loginButton"));
